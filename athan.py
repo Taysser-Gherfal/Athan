@@ -49,6 +49,9 @@ def newday():
     print("newday:") # to be removed
     print(ptime) # to be removed
 
+# startup indicator
+athan()
+
 # getting prayer times when the app first start
 try:
     ptime = prayer_times()
