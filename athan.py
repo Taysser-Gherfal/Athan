@@ -45,9 +45,6 @@ def newday():
         ptime = prayer_times()
     except:
         print("Error getting prayer times using the internet")
-    #ptime.append("04:02 PM") # to be removed
-    print("newday:") # to be removed
-    print(ptime) # to be removed
 
 # startup indicator
 athan()
