@@ -16,12 +16,11 @@ def prayer_times():
     url = 'https://www.islamicfinder.org/world/united-states/5808079/redmond-prayer-times/'
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
-    x = soup.select('.todayPrayerTime')
+    x = soup.select('.prayertime')
     times = []
     for i in x:
-        times.append(str(i)[30:-7])
+        times.append(str(i)[25:-7])
     del times[1]
-    del times[-1]
     return times
 
 #the Athan playing function
