@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 import schedule
-import time
+import time, datetime
 import requests
 import urllib.request
 from bs4 import BeautifulSoup
@@ -27,32 +27,49 @@ def prayer_times():
 def athan():
     os.system('mpg321 Abdul-Basit.mp3 &')
 
+#playing an error message
+def error():
+    os.system('mpg321 Error.mp3')
+
 #plays the Athan if it is the right time
 def job():
     t = time.localtime()
     current_time = time.strftime("%I:%M %p", t)
-    print(current_time) # to be removed
     global ptime
-    print(ptime) # to be removed
     if current_time in ptime:
         athan()
 
 # updates prayer times
 def newday():
     global ptime
-    try:
-        ptime = prayer_times()
-    except:
-        print("Error getting prayer times using the internet")
-
-# startup indicator
-athan()
+    while True:
+        try:
+            ptime = prayer_times()
+            print("")
+            print(datetime.datetime.now().strftime("%A" + " - " + "%x"))
+            print(ptime)
+            print("------------------------------------------------------------")
+            print()
+            break
+        except:
+            print("Error getting prayer times using the internet")
+            error()
 
 # getting prayer times when the app first start
-try:
-    ptime = prayer_times()
-except:
-    print("Error getting prayer times using the internet")
+while True:
+    try:
+        ptime = prayer_times()
+        # startup indicator
+        athan()
+        print("")
+        print(datetime.datetime.now().strftime("%A" + " - " + "%x"))
+        print(ptime)
+        print("------------------------------------------------------------")
+        print()
+        break
+    except:
+        print("Error getting prayer times using the internet")
+        error()
 
 # scheduling jobs...
 schedule.every(1).minutes.do(job)
