@@ -23,9 +23,15 @@ def prayer_times():
     del times[1]
     return times
 
+#the Doa playing function
+def doa():
+    os.system('mpg321 Doa.mp3 &')
+
 #the Athan playing function
 def athan():
     os.system('mpg321 Abdul-Basit.mp3 &')
+    time.sleep(210)
+    doa()
 
 #playing an error message
 def error():
