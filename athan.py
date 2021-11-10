@@ -2,16 +2,25 @@
 import datetime
 import os
 import time
-
 import requests
 import schedule
 from bs4 import BeautifulSoup
+import pyttsx3
+
+# setting voice rate
+engine = pyttsx3.init()
+rate = engine.getProperty('rate')   # getting details of current speaking rate
+engine.setProperty('rate', 150)     # setting up new voice rate
 
 # changing working directory
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
+# speaking
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
 
 # getting prayer times
 def prayer_times():
@@ -25,11 +34,9 @@ def prayer_times():
     del times[1]
     return times
 
-
 # the Doa playing function
 def doa():
     os.system('mpg321 Doa.mp3 &')
-
 
 # the Athan playing function
 def athan():
@@ -37,11 +44,9 @@ def athan():
     time.sleep(210)
     doa()
 
-
-# playing an error message
-def error():
-    os.system('mpg321 Error.mp3')
-
+# playing an intro
+def intro():
+    os.system('mpg321 Intro.mp3 &')
 
 # plays the Athan if it is the right time
 def job():
@@ -50,7 +55,6 @@ def job():
     global ptime
     if current_time in ptime:
         athan()
-
 
 # updates prayer times
 def newday():
@@ -66,24 +70,28 @@ def newday():
             break
         except:
             print("Error getting prayer times using the internet")
-            error()
-
+            speak("I'm unable to get your prayer times from the internet! Please check or configure your internet connection")
+            time.sleep(60)
 
 # getting prayer times when the app first start
 while True:
     try:
+        # welcome message
+        speak("Welcome!")
+        # getting prayer times
         ptime = prayer_times()
-        # startup indicator
-        athan()
         print("")
         print(datetime.datetime.now().strftime("%A" + " - " + "%x"))
         print(ptime)
         print("------------------------------------------------------------")
         print()
+        # startup indicator
+        intro()
         break
     except:
         print("Error getting prayer times using the internet")
-        error()
+        speak("I'm unable to get your prayer times from the internet! Please check or configure your internet connection")
+        time.sleep(60)
 
 # scheduling jobs...
 schedule.every(1).minutes.do(job)
