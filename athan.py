@@ -117,7 +117,7 @@ while True:
                             ntime=ptime[0]
                             location=0
         display.updateDisplay(ntime, location)
-        print(str(ntime) + " -- " + str(current_time))
+        print(str(ntime) + " -- " + str(current_time) + "--" + str(current_time < ptime[0]))
         print("------------------------------------------------------------")
         print()
         # startup indicator
