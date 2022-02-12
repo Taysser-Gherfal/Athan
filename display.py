@@ -34,37 +34,10 @@ try:
     draw = ImageDraw.Draw(Himage)
     draw.text((10, 0), 'Next Prayer', font = font18, fill = 0)   
     draw.text((10, 30), 'Fajer', font = font50, fill = 0)
-    draw.text((10, 90), '06:30 AM', font = font50, fill = 0)
+    draw.text((10, 95), '06:30 am', font = font50, fill = 0)
     draw.text((10, 160), '---------------------- 02/11/2022 ----------------------', font = font12, fill = 0)     
     epd.display(epd.getbuffer(Himage))
     epd.sleep()
-
-    '''   
-    # Drawing on the Vertical image
-    logging.info("2.Drawing on the Vertical image...")
-    Limage = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
-    draw = ImageDraw.Draw(Limage)
-    draw.text((2, 0), 'hello world', font = font18, fill = 0)
-    draw.text((20, 50), u'微雪电子', font = font18, fill = 0)
-    draw.line((10, 90, 60, 140), fill = 0)
-    draw.line((60, 90, 10, 140), fill = 0)
-    draw.rectangle((10, 90, 60, 140), outline = 0)
-    draw.line((95, 90, 95, 140), fill = 0)
-    draw.line((70, 115, 120, 115), fill = 0)
-    draw.arc((70, 90, 120, 140), 0, 360, fill = 0)
-    draw.rectangle((10, 150, 60, 200), fill = 0)
-    draw.chord((70, 150, 120, 200), 0, 360, fill = 0)
-    epd.display(epd.getbuffer(Limage))
-    time.sleep(2)
-    
-
-
-    logging.info("Clear...")
-    epd.Clear(0xFF)
-    logging.info("Goto Sleep...")
-    epd.sleep()
-
-    '''
         
 except IOError as e:
     logging.info(e)
