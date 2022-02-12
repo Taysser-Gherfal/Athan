@@ -15,9 +15,20 @@ import traceback
 
 logging.basicConfig(level=logging.DEBUG)
 
-def updateDisplay():
+def updateDisplay(PTime, Index):
+    # Figuring out the next salah time
+    if Index == 0:
+        Salah = "Fajer"
+    elif Index == 1:
+        Salah = "Doher"
+    elif Index == 2:
+        Salah = "Aser"
+    elif Index == 3:
+        Salah = "Magreb"
+    else:
+        Salah = "Isha"
+    
     try:
-
         logging.info("epd2in7 Demo")   
         epd = epd2in7.EPD()
         
@@ -34,8 +45,8 @@ def updateDisplay():
         Himage = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
         draw = ImageDraw.Draw(Himage)
         draw.text((10, 0), 'Next Prayer', font = font18, fill = 0)   
-        draw.text((10, 30), 'Fajer', font = font50, fill = 0)
-        draw.text((10, 95), '06:30 am', font = font50, fill = 0)
+        draw.text((10, 30), Salah, font = font50, fill = 0)
+        draw.text((10, 95), PTime, font = font50, fill = 0)
         draw.text((10, 160), '---------------------- 02/11/2022 ----------------------', font = font12, fill = 0)     
         epd.display(epd.getbuffer(Himage))
         epd.sleep()

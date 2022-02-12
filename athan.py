@@ -56,6 +56,12 @@ def job():
     global ptime
     if current_time in ptime:
         athan()
+        location = ptime.index(current_time)
+        # info about the next prayer time
+        location = location + 1
+        if location > 4:
+            location = 0
+        display.updateDisplay(ptime[location], location)
 
 # updates prayer times
 def newday():
