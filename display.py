@@ -24,15 +24,18 @@ try:
     logging.info("init and Clear")
     epd.init()
     epd.Clear(0xFF)
-    font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
+    font12 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 12)
     font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
     font35 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 35)
+    font50 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 50)
     # Drawing on the Horizontal image
     logging.info("1.Drawing on the Horizontal image...")
     Himage = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Himage)
-    draw.text((10, 0), 'Next Prayer', font = font24, fill = 0)   
-    draw.text((10, 50), 'Fajer', font = font24, fill = 0)   
+    draw.text((10, 0), 'Next Prayer', font = font18, fill = 0)   
+    draw.text((10, 30), 'Fajer', font = font50, fill = 0)
+    draw.text((10, 90), '06:30 AM', font = font50, fill = 0)
+    draw.text((10, 160), '---------------------- 02/11/2022 ----------------------', font = font12, fill = 0)     
     epd.display(epd.getbuffer(Himage))
     epd.sleep()
 
