@@ -6,6 +6,7 @@ import requests
 import schedule
 from bs4 import BeautifulSoup
 import pyttsx3
+import display
 
 # setting voice rate
 engine = pyttsx3.init()
@@ -83,6 +84,7 @@ while True:
         print("")
         print(datetime.datetime.now().strftime("%A" + " - " + "%x"))
         print(ptime)
+        display.updateDisplay()
         print("------------------------------------------------------------")
         print()
         # startup indicator
