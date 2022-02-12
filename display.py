@@ -31,10 +31,10 @@ try:
     logging.info("1.Drawing on the Horizontal image...")
     Himage = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Himage)
-    draw.text((10, 0), 'Next Prayer', font = font24, fill = 0)
-    draw.text((20, 0), 'فجر', font = font24, fill = 0)      
+    draw.text((10, 0), 'Next Prayer', font = font24, fill = 0)   
+    draw.text((10, 50), 'Fajer', font = font24, fill = 0)   
     epd.display(epd.getbuffer(Himage))
-    time.sleep(2)
+    epd.sleep()
 
     '''   
     # Drawing on the Vertical image
