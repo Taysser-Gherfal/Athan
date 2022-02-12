@@ -90,7 +90,28 @@ while True:
         print("")
         print(datetime.datetime.now().strftime("%A" + " - " + "%x"))
         print(ptime)
-        display.updateDisplay()
+        t = time.localtime()
+        # needs refactoring
+        current_time = time.strftime("%I:%M %p", t)
+        # finding the next Ptime
+        if current_time < ptime[0]:
+            ntime=ptime[0]
+        else:
+            if current_time < ptime[1]:
+                ntime=ptime[1]
+            else:
+                if current_time < ptime[2]:
+                    ntime=ptime[2]
+                else:
+                    if current_time < ptime[3]:
+                        ntime=ptime[3]
+                    else:
+                        if current_time < ptime[4]:
+                            ntime=ptime[4]
+                        else:
+                            ntime=ptime[0]
+        location = ptime.index(ntime)
+        display.updateDisplay(ntime, location)
         print("------------------------------------------------------------")
         print()
         # startup indicator
