@@ -92,7 +92,7 @@ while True:
         print(ptime)
         t = time.localtime()
         # needs refactoring
-        #current_time = time.strftime("%I:%M %p", t)
+        current_time = time.strftime("%I:%M %p", t)
         # finding the next Ptime
         if t <= time.strptime(ptime[0], '%I:%M %p'):
             ntime=ptime[0]
