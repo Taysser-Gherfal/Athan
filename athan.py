@@ -94,19 +94,19 @@ while True:
         # needs refactoring
         current_time = time.strftime("%I:%M %p", t)
         # finding the next Ptime
-        if current_time <= time.strptime(ptime[0], '%I:%M%p'):
+        if current_time <= time.strptime(ptime[0], '%I:%M %p'):
             ntime=ptime[0]
             location=0
-        elif current_time <= time.strptime(ptime[1], '%I:%M%p'):
+        elif current_time <= time.strptime(ptime[1], '%I:%M %p'):
             ntime=ptime[1]
             location=1
-        elif current_time <= time.strptime(ptime[2], '%I:%M%p'):
+        elif current_time <= time.strptime(ptime[2], '%I:%M %p'):
             ntime=ptime[2]
             location=2
-        elif current_time <= time.strptime(ptime[3], '%I:%M%p'):
+        elif current_time <= time.strptime(ptime[3], '%I:%M %p'):
             ntime=ptime[3]
             location=3
-        elif current_time <= time.strptime(ptime[4], '%I:%M%p'):
+        elif current_time <= time.strptime(ptime[4], '%I:%M %p'):
             ntime=ptime[4]
             location=4
         else:
