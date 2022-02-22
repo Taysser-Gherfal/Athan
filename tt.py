@@ -18,7 +18,7 @@ message.pack()
 label = ttk.Label(
     root,
     text='Fajer',
-    font=("Helvetica", 100))
+    font=("Helvetica", 80))
 
 label.pack(ipadx=10, ipady=10)
 
