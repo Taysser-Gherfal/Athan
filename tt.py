@@ -11,8 +11,8 @@ root.title("Athan")
 root.geometry('600x400')
 
 # place a label on the root window
-message = tk.Label(root, text="Hello, World!")
-message.pack()
+#message = tk.Label(root, text="Hello, World!")
+#message.pack()
 
 # label with a specific font
 label = ttk.Label(
@@ -21,6 +21,14 @@ label = ttk.Label(
     font=("Helvetica", 80))
 
 label.pack(ipadx=10, ipady=10)
+
+# label with a specific font
+label2 = ttk.Label(
+    root,
+    text='05.25 am',
+    font=("Helvetica", 80))
+
+label2.pack(ipadx=10, ipady=10)
 
 # keep the window displaying
 root.mainloop()
