@@ -95,7 +95,7 @@ def job():
         location = location + 1
         if location > 4:
             location = 0
-        display.updateDisplay(ptime[location], location)
+        updateDisplay(ptime[location], location)
 
 # updates prayer times
 def newday():
@@ -158,7 +158,7 @@ while True:
         else:
             ntime=ptime[0]
             location=0
-        display.updateDisplay(ntime, location)
+        updateDisplay(ntime, location)
         print(str(ptime[2]) + " -- " + str(current_time) + "--" + str(current_time <= ptime[1]))
         print("------------------------------------------------------------")
         print()
