@@ -174,10 +174,9 @@ while True:
 schedule.every(1).minutes.do(job)
 schedule.every().day.at("02:00").do(newday)
 
-# keep the window displaying
-root.mainloop()
-print("testing...")
-
 while True:
     schedule.run_pending()
     time.sleep(1)
+
+# keep the window displaying
+root.mainloop()
