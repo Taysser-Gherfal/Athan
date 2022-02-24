@@ -177,6 +177,7 @@ schedule.every().day.at("02:00").do(newday)
 while True:
     schedule.run_pending()
     time.sleep(1)
+    print("test")
     root.update()
 
 # keep the window displaying
