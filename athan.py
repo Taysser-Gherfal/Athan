@@ -7,6 +7,8 @@ import schedule
 from bs4 import BeautifulSoup
 import pyttsx3
 import display
+import tkinter as tk
+from tkinter import Label, ttk
 
 # setting voice rate
 engine = pyttsx3.init()
@@ -80,6 +82,18 @@ def newday():
             speak("I'm unable to get your prayer times from the internet! Please check or configure your internet connection")
             time.sleep(60)
 
+#start of program
+root = tk.Tk()
+
+# window title
+root.title("Athan")
+
+# window size
+root.geometry('600x400')
+
+#background color
+root.configure(bg='black')
+
 # getting prayer times when the app first start
 while True:
     try:
@@ -127,6 +141,9 @@ while True:
 # scheduling jobs...
 schedule.every(1).minutes.do(job)
 schedule.every().day.at("02:00").do(newday)
+
+# keep the window displaying
+root.mainloop()
 
 while True:
     schedule.run_pending()
