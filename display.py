@@ -46,6 +46,5 @@ def updateDisplay(PTime, Index):
 
     label2.pack(ipadx=10, ipady=10)
 
-
-# keep the window displaying
-root.mainloop()
+    # keep the window displaying
+    root.mainloop()
