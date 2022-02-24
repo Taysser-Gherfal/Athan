@@ -6,6 +6,7 @@ import requests
 import schedule
 from bs4 import BeautifulSoup
 import pyttsx3
+import display
 
 # setting voice rate
 engine = pyttsx3.init()
@@ -55,6 +56,12 @@ def job():
     global ptime
     if current_time in ptime:
         athan()
+        location = ptime.index(current_time)
+        # info about the next prayer time
+        location = location + 1
+        if location > 4:
+            location = 0
+        display.updateDisplay(ptime[location], location)
 
 # updates prayer times
 def newday():
@@ -83,6 +90,30 @@ while True:
         print("")
         print(datetime.datetime.now().strftime("%A" + " - " + "%x"))
         print(ptime)
+        t = time.localtime()
+        # needs refactoring
+        current_time = time.strftime("%I:%M %p", t)
+        # finding the next Ptime
+        if t <= time.strptime(ptime[0], '%I:%M %p'):
+            ntime=ptime[0]
+            location=0
+        elif t <= time.strptime(ptime[1], '%I:%M %p'):
+            ntime=ptime[1]
+            location=1
+        elif t <= time.strptime(ptime[2], '%I:%M %p'):
+            ntime=ptime[2]
+            location=2
+        elif t <= time.strptime(ptime[3], '%I:%M %p'):
+            ntime=ptime[3]
+            location=3
+        elif t <= time.strptime(ptime[4], '%I:%M %p'):
+            ntime=ptime[4]
+            location=4
+        else:
+            ntime=ptime[0]
+            location=0
+        display.updateDisplay(ntime, location)
+        print(str(ptime[2]) + " -- " + str(current_time) + "--" + str(current_time <= ptime[1]))
         print("------------------------------------------------------------")
         print()
         # startup indicator
