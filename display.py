@@ -30,7 +30,7 @@ def updateDisplay(PTime, Index):
     # label with a specific font
     label = ttk.Label(
         root,
-        text='Fajer',
+        text=Salah,
         font=("Helvetica", 80),
         background="black", foreground="white")
 
@@ -40,11 +40,12 @@ def updateDisplay(PTime, Index):
     # label with a specific font
     label2 = ttk.Label(
         root,
-        text='05.25 am',
+        text=PTime,
         font=("Helvetica", 80),
         background="black", foreground="white")
 
     label2.pack(ipadx=10, ipady=10)
 
-    # keep the window displaying
-    root.mainloop()
+
+# keep the window displaying
+root.mainloop()
