@@ -1,3 +1,6 @@
+import tkinter as tk
+from tkinter import Label, ttk
+
 def updateDisplay(PTime, Index):
     # Figuring out the next salah time
     if Index == 0:
@@ -29,6 +32,3 @@ def updateDisplay(PTime, Index):
         background="black", foreground="white")
 
     label2.pack(ipadx=10, ipady=10)
-
-    # keep the window displaying
-    root.mainloop()
