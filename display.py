@@ -40,7 +40,7 @@ def updateDisplay(PTime, Index):
     # label with a specific font
     label2 = ttk.Label(
         root,
-        text=PTime,
+        text=str(PTime),
         font=("Helvetica", 80),
         background="black", foreground="white")
 
