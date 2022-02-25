@@ -22,27 +22,10 @@ def updateDisplay(PTime, Index):
         Salah = "Magreb"
     else:
         Salah = "Isha"
-    
-    # label with a specific font
-    label = ttk.Label(
-        root,
-        text=Salah,
-        font=("Helvetica", 80),
-        background="black", foreground="white")
 
-    label.pack(ipadx=10, ipady=10)
+    salah.config(text=Salah)
+    salahTime.config(text=str(PTime))
 
-    label.config(text="Test")
-
-
-    # label with a specific font
-    label2 = ttk.Label(
-        root,
-        text=str(PTime),
-        font=("Helvetica", 80),
-        background="black", foreground="white")
-
-    label2.pack(ipadx=10, ipady=10)
 
 # setting voice rate
 engine = pyttsx3.init()
@@ -127,6 +110,24 @@ root.geometry('600x400')
 
 #background color
 root.configure(bg='black')
+
+# label with a specific font
+salah = ttk.Label(
+    root,
+    text="Salah",
+    font=("Helvetica", 80),
+    background="black", foreground="white")
+
+salah.pack(ipadx=10, ipady=10)
+
+# label with a specific font
+salahTime = ttk.Label(
+    root,
+    text="Time",
+    font=("Helvetica", 80),
+    background="black", foreground="white")
+
+salahTime.pack(ipadx=10, ipady=10)
 
 # getting prayer times when the app first start
 while True:
