@@ -32,6 +32,8 @@ def updateDisplay(PTime, Index):
 
     label.pack(ipadx=10, ipady=10)
 
+    label.config(text="Test")
+
 
     # label with a specific font
     label2 = ttk.Label(
