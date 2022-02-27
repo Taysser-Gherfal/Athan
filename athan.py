@@ -49,6 +49,11 @@ def athan():
 def intro():
     os.system('mpg321 Intro.mp3 &')
 
+# convert time to minutes
+def min(t):
+    mins = int(t.tm_hour)*60 + int(t.tm_min)
+    return mins
+
 # plays the Athan if it is the right time
 def job():
     t = time.localtime()
@@ -92,28 +97,25 @@ while True:
         print(ptime)
         t = time.localtime()
         # needs refactoring
-        current_time = time.strftime("%I:%M %p", t)
         # finding the next Ptime
-        if t <= time.strptime(ptime[0], '%I:%M %p'):
+        if min(t) <= min(time.strptime(ptime[0], '%I:%M %p')):
             ntime=ptime[0]
             location=0
-        elif t <= time.strptime(ptime[1], '%I:%M %p'):
+        elif min(t) <= min(time.strptime(ptime[1], '%I:%M %p')):
             ntime=ptime[1]
             location=1
-        elif t <= time.strptime(ptime[2], '%I:%M %p'):
+        elif min(t) <= min(time.strptime(ptime[2], '%I:%M %p')):
             ntime=ptime[2]
             location=2
-        elif t <= time.strptime(ptime[3], '%I:%M %p'):
+        elif min(t) <= min(time.strptime(ptime[3], '%I:%M %p')):
             ntime=ptime[3]
             location=3
-        elif t <= time.strptime(ptime[4], '%I:%M %p'):
+        elif min(t) <= min(time.strptime(ptime[4], '%I:%M %p')):
             ntime=ptime[4]
             location=4
         else:
             ntime=ptime[0]
             location=0
-        display.updateDisplay(ntime, location)
-        print(str(ptime[2]) + " -- " + str(current_time) + "--" + str(current_time <= ptime[1]))
         print("------------------------------------------------------------")
         print()
         # startup indicator
