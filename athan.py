@@ -167,7 +167,6 @@ while True:
             location=0
 
         updateDisplay(ntime, location)
-        print(str(ptime[2]) + " -- " + str(current_time) + "--" + str(current_time <= ptime[1]))
         print("------------------------------------------------------------")
         print()
         # startup indicator
