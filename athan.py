@@ -137,32 +137,33 @@ while True:
         # getting prayer times
         ptime = prayer_times()
         print("")
-        print(datetime.datetime.now().strftime("%A" + " - " + "%x"))
         print(ptime)
         t = time.localtime()
         # needs refactoring
         current_time = time.strftime("%I:%M %p", t)
         # finding the next Ptime
         if "AM" in str(t):
-            if t > time.strptime(ptime[0], '%I:%M %p'):
+            if current_time > time.strptime(ptime[0], '%I:%M %p'):
                 ntime=ptime[1]
                 location=1
             else:
                 ntime=ptime[0]
                 location=0
+                print("first else - AM")
         else:
-            if t <= time.strptime(ptime[2], '%I:%M %p'):
+            if current_time <= time.strptime(ptime[2], '%I:%M %p'):
                 ntime=ptime[2]
                 location=2
-            elif t <= time.strptime(ptime[3], '%I:%M %p'):
+            elif current_time <= time.strptime(ptime[3], '%I:%M %p'):
                 ntime=ptime[3]
                 location=3
-            elif t <= time.strptime(ptime[4], '%I:%M %p'):
+            elif current_time <= time.strptime(ptime[4], '%I:%M %p'):
                 ntime=ptime[4]
                 location=4
             else:
                 ntime=ptime[0]
                 location=0
+                print("second else")
 
         updateDisplay(ntime, location)
         print(str(ptime[2]) + " -- " + str(current_time) + "--" + str(current_time <= ptime[1]))
