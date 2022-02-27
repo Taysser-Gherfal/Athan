@@ -142,7 +142,7 @@ while True:
         # needs refactoring
         current_time = time.strftime("%I:%M %p", t)
         # finding the next Ptime
-        if "AM" in str(t):
+        if "AM" in current_time:
             if t > time.strptime(ptime[0], '%I:%M %p'):
                 ntime=ptime[1]
                 location=1
@@ -150,7 +150,7 @@ while True:
                 ntime=ptime[0]
                 location=0
                 print("first else - AM")
-                print(str(t))
+                print(current_time)
         else:
             if t <= time.strptime(ptime[2], '%I:%M %p'):
                 ntime=ptime[2]
@@ -165,7 +165,7 @@ while True:
                 ntime=ptime[0]
                 location=0
                 print("second else")
-                print(str(t))
+                print(current_time)
 
         updateDisplay(ntime, location)
         print(str(ptime[2]) + " -- " + str(current_time) + "--" + str(current_time <= ptime[1]))
