@@ -116,8 +116,12 @@ while True:
         else:
             ntime=ptime[0]
             location=0
+        
+        # update display
+        display.updateDisplay(ntime, location)
         print("------------------------------------------------------------")
         print()
+        
         # startup indicator
         intro()
         break
