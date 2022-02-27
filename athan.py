@@ -146,7 +146,7 @@ while True:
         # needs refactoring
         # finding the next Ptime
         print(str(min(time.strptime(ptime[0], '%I:%M %p'))))
-        
+        print(str(min(t)))
         if min(t) <= min(time.strptime(ptime[0], '%I:%M %p')):
             ntime=ptime[0]
             location=0
