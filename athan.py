@@ -143,7 +143,7 @@ while True:
         current_time = time.strftime("%I:%M %p", t)
         # finding the next Ptime
         if "AM" in str(t):
-            if current_time > time.strptime(ptime[0], '%I:%M %p'):
+            if t > time.strptime(ptime[0], '%I:%M %p'):
                 ntime=ptime[1]
                 location=1
             else:
@@ -151,13 +151,13 @@ while True:
                 location=0
                 print("first else - AM")
         else:
-            if current_time <= time.strptime(ptime[2], '%I:%M %p'):
+            if t <= time.strptime(ptime[2], '%I:%M %p'):
                 ntime=ptime[2]
                 location=2
-            elif current_time <= time.strptime(ptime[3], '%I:%M %p'):
+            elif t <= time.strptime(ptime[3], '%I:%M %p'):
                 ntime=ptime[3]
                 location=3
-            elif current_time <= time.strptime(ptime[4], '%I:%M %p'):
+            elif t <= time.strptime(ptime[4], '%I:%M %p'):
                 ntime=ptime[4]
                 location=4
             else:
