@@ -99,6 +99,10 @@ def newday():
             speak("I'm unable to get your prayer times from the internet! Please check or configure your internet connection")
             time.sleep(60)
 
+def min(t):
+    mins = int(t.tm_hour)*60 + int(t.tm_min)
+    return mins
+
 #start of program
 root = tk.Tk()
 
@@ -140,34 +144,26 @@ while True:
         print(ptime)
         t = time.localtime()
         # needs refactoring
-        current_time = int(t.tm_hour)*60 + int(t.tm_min)
-        print(str(current_time))
         # finding the next Ptime
-        if "AM" in current_time:
-            if t > time.strptime(ptime[0], '%I:%M %p'):
-                ntime=ptime[1]
-                location=1
-                print(time.strptime(ptime[0], '%I:%M %p'))
-            else:
-                ntime=ptime[0]
-                location=0
-                print("first else - AM")
-                print(current_time)
+            
+        if min(t) <= min(time.strptime(ptime[0], '%I:%M %p')):
+            ntime=ptime[0]
+            location=0
+        elif min(t) <= min(time.strptime(ptime[1], '%I:%M %p')):
+            ntime=ptime[1]
+            location=1
+        elif min(t) <= min(time.strptime(ptime[2], '%I:%M %p')):
+            ntime=ptime[2]
+            location=2
+        elif min(t) <= min(time.strptime(ptime[3], '%I:%M %p')):
+            ntime=ptime[3]
+            location=3
+        elif min(t) <= min(time.strptime(ptime[4], '%I:%M %p')):
+            ntime=ptime[4]
+            location=4
         else:
-            if t <= time.strptime(ptime[2], '%I:%M %p'):
-                ntime=ptime[2]
-                location=2
-            elif t <= time.strptime(ptime[3], '%I:%M %p'):
-                ntime=ptime[3]
-                location=3
-            elif t <= time.strptime(ptime[4], '%I:%M %p'):
-                ntime=ptime[4]
-                location=4
-            else:
-                ntime=ptime[0]
-                location=0
-                print("second else")
-                print(current_time)
+            ntime=ptime[0]
+            location=0
 
         updateDisplay(ntime, location)
         print(str(ptime[2]) + " -- " + str(current_time) + "--" + str(current_time <= ptime[1]))
