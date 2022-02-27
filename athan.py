@@ -140,7 +140,7 @@ while True:
         print(ptime)
         t = time.localtime()
         # needs refactoring
-        current_time = int(t.hour)*60 + int(t.minute)
+        current_time = int(t.tm_hour)*60 + int(t.tm_min)
         print(str(current_time))
         # finding the next Ptime
         if "AM" in current_time:
