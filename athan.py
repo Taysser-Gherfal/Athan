@@ -140,7 +140,8 @@ while True:
         print(ptime)
         t = time.localtime()
         # needs refactoring
-        current_time = time.strftime("%I:%M %p", t)
+        current_time = int(t.hour)*60 + int(t.minute)
+        print(str(current_time))
         # finding the next Ptime
         if "AM" in current_time:
             if t > time.strptime(ptime[0], '%I:%M %p'):
