@@ -146,7 +146,7 @@ while True:
             if t > time.strptime(ptime[0], '%I:%M %p'):
                 ntime=ptime[1]
                 location=1
-                print(time.strptime(ptime[0], '%I:%M %p, %Y'))
+                print(time.strptime(ptime[0], '%I:%M %p'))
             else:
                 ntime=ptime[0]
                 location=0
