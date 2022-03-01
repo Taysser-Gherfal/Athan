@@ -9,6 +9,7 @@ import pyttsx3
 #import display
 import tkinter as tk
 from tkinter import Label, ttk
+import vlc
 
 def updateDisplay(PTime, Index):
     # Figuring out the next salah time
@@ -66,7 +67,17 @@ def athan():
 
 # playing an intro
 def intro():
-    os.system('mpg321 Intro.mp3 &')
+    #os.system('mpv Intro.mp3 &')
+
+    # media object
+    media = vlc.Media("Intro.mp3")
+    
+    # setting media to the media player
+    media_player.set_media(media)
+    
+    # start playing video
+    media_player.play()
+
 
 # plays the Athan if it is the right time
 def job():
@@ -133,6 +144,9 @@ salahTime = ttk.Label(
 
 salahTime.pack(ipadx=10, ipady=10)
 
+# creating vlc media player object
+media_player = vlc.MediaPlayer()
+
 # getting prayer times when the app first start
 while True:
     try:
@@ -145,8 +159,6 @@ while True:
         t = time.localtime()
         # needs refactoring
         # finding the next Ptime
-        print(str(min(time.strptime(ptime[0], '%I:%M %p'))))
-        print(str(min(t)))
         if min(t) <= min(time.strptime(ptime[0], '%I:%M %p')):
             ntime=ptime[0]
             location=0
